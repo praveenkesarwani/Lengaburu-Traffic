@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.geektrust'
+sourceCompatibility = 11
+targetCompatibility = 11
+
+
+jar {
+    archiveBaseName = 'geektrust' //Please do not change this final artifact name
+    archiveVersion = null   //Please do not change this final artifact version
+    version = null   //Please do not change this final artifact version
+
+    manifest {
+        attributes 'Main-Class' : 'com.geektrust.Geektrust' //Change this to the main class of your program which will be executed
+    }
+    // To create a single jar with all dependencies.
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    } {
+        exclude "META-INF/*.SF"
+        exclude "META-INF/*.DSA"
+        exclude "META-INF/*.RSA"
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+//Add your dependencies here
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+}
+
+test {
+    useJUnitPlatform()
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "\nTEST RESULT: ${result.resultType}"
+            println "TEST SUMMARY: RAN ${result.testCount} TESTS, " +
+                    "${result.successfulTestCount} SUCCEEDED, " +
+                    "${result.failedTestCount} FAILED, " +
+                    "${result.skippedTestCount} SKIPPED"
+        }
+    }
+}

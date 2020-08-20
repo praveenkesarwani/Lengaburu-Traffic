@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.geektrust.Integration.SolverTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-08-20T11:10:31" hostname="praveen-Inspiron-15-3567" time="0.044">
+  <properties/>
+  <testcase name="shouldGiveWrongOutput()" classname="com.geektrust.Integration.SolverTest" time="0.04"/>
+  <testcase name="shouldGiveCorrectOutput()" classname="com.geektrust.Integration.SolverTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
